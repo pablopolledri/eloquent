@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eloquent Mograph Studio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #fff;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+    .logo-text-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo {
+      height: 40px;
+    }
+    .header-text h1 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+    .subtitulo {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    #menuToggle {
+      display: none;
+      font-size: 1rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .header-nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+    .header-nav a:hover {
+      color: #007bff;
+    }
+
+    .social-icons a {
+      margin-left: 10px;
+      color: #333;
+      font-size: 1.2rem;
+    }
+    .social-icons a:hover {
+      color: #007bff;
+    }
+
+    /* Offcanvas menu */
+    .offcanvas-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 250px;
+      height: 100%;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      gap: 1rem;
+      box-shadow: -2px 0 6px rgba(0,0,0,0.1);
+      transition: right 0.3s ease;
+      z-index: 999;
+    }
+    .offcanvas-menu.active {
+      right: 0;
+    }
+    .offcanvas-menu a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+    .offcanvas-social-icons a {
+      margin-top: 20px;
+      font-size: 1.3rem;
+      color: #333;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-nav,
+      .social-icons {
+        display: none;
+      }
+      #menuToggle {
+        display: block;
+      }
+    }
+
+    /* Hero video */
+    #hero-video {
+      margin-top: 80px;
+      width: 100%;
+      height: 70vh;
+      overflow: hidden;
+    }
+    #hero-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Texto principal */
+    #texto-principal {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+    #texto-principal h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #111;
+    }
+    #texto-principal h2 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: #555;
+    }
+    #texto-principal p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      color: #444;
+    }
+    #texto-principal ul {
+      list-style: none;
+      padding-left: 0;
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: left;
+      color: #333;
+    }
+    #texto-principal ul li {
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+    #texto-principal ul li::before {
+      content: "✔️";
+      margin-right: 8px;
+      color: #28a745;
+    }
+
+    /* Sections */
+    .sections-container {
+      display: flex;
+      max-width: 1000px;
+      margin: 0 auto 60px;
+      padding: 0 20px;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .section-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 30%;
+      text-decoration: none;
+      color: #333;
+      border: 1px solid #ddd;
+      background: #fafafa;
+      transition: box-shadow 0.3s ease;
+    }
+    .section-card:hover {
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+    .section-card img {
+      width: 100%;
+      object-fit: cover;
+      border-bottom: 1px solid #ddd;
+    }
+    .section-card h3 {
+      margin: 15px 0 10px;
+      font-size: 1.4rem;
+    }
+    .section-card p {
+      padding: 0 15px;
+      font-size: 1rem;
+      line-height: 1.4;
+      text-align: center;
+      margin-bottom: 10px;
+      color: #555;
+    }
+    .see-more {
+      display: inline-block;
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: #007bff;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+      .section-card {
+        width: 45%;
+      }
+    }
+    @media (max-width: 600px) {
+      .section-card {
+        width: 90%;
+      }
+    }
+
+    /* Contact info */
+    #contact-info {
+      max-width: 900px;
+      margin: 60px auto 80px;
+      padding: 0 20px;
+      text-align: center;
+      font-size: 1rem;
+      color: #444;
+    }
+    #contact-info h4 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    #contact-info .contact-columns {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .contact-column {
+      min-width: 200px;
+    }
+    .contact-column p {
+      margin: 8px 0;
+    }
+    .contact-column a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #f8f8f8;
+      padding: 30px;
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+      border-top: 1px solid #ddd;
+    }
+    .footer-links {
+      margin-top: 10px;
+    }
+    .footer-links a {
+      margin: 0 10px;
+      color: #007bff;
+      text-decoration: none;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header container -->
+  <div id="header-container"></div>
+
+  <!-- Hero Video -->
+  <section id="hero-video">
+    <video autoplay muted loop playsinline>
+      <source src="img/reel.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </section>
+
+  <!-- Texto principal -->
+  <section id="texto-principal">
+    <h1>Elevate Your Brand with Motion Graphics</h1>
+    <h2>Capture attention with stunning visuals</h2>
+    <p>
+      In today's fast-paced digital landscape, static visuals just aren't enough. That's why we offer bespoke motion graphics services to help companies like yours stand out from the crowd.
+    </p>
+    <ul>
+      <li>Enhance your brand identity</li>
+      <li>Explain complex information in an engaging way</li>
+      <li>Boost your marketing efforts</li>
+      <li>Drive traffic and social media engagement</li>
+    </ul>
+  </section>
+
+  <!-- Secciones -->
+  <section class="sections-container">
+    <a href="motiongraphics.html" class="section-card">
+      <img src="img/work/work-01.jpg" alt="Motion Graphics" />
+      <h3>Motion Graphics</h3>
+      <p>Creative animations that bring your brand to life and communicate your message clearly.</p>
+      <span class="see-more">See more →</span>
+    </a>
+    <a href="experiences.html" class="section-card">
+      <img src="img/work/work-02.jpg" alt="Experiences" />
+      <h3>Experiences</h3>
+      <p>Immersive and interactive digital experiences designed to engage your audience deeply.</p>
+      <span class="see-more">See more →</span>
+    </a>
+    <a href="services.html" class="section-card">
+      <img src="img/work/work-03.jpg" alt="Services" />
+      <h3>Services</h3>
+      <p>Comprehensive solutions tailored to your needs, from concept to delivery.</p>
+      <span class="see-more">See more →</span>
+    </a>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contact-info">
+    <h4>Contact us</h4>
+    <div class="contact-columns">
+      <div class="contact-column">
+        <p>Argentina</p>
+        <a href="mailto:eloquent-arg@gmail.com">eloquent-arg@gmail.com</a>
+      </div>
+      <div class="contact-column">
+        <p>USA</p>
+        <a href="mailto:eloquent-usa@gmail.com">eloquent-usa@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script>
+    const headerHTML = `
+      <header>
+        <div class="header-content">
+          <div class="logo-text-group">
+            <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+              <img src="img/logo.png" alt="Logo" class="logo" />
+              <div class="header-text">
+                <h1>ELOQUENT</h1>
+                <p class="subtitulo">Mograph Studio</p>
+              </div>
+            </a>
+          </div>
+          <button id="menuToggle" aria-label="Abrir menú">Menu</button>
+        </div>
+        <div class="header-right">
+          <nav class="header-nav">
+            <a href="motiongraphics.html">Motion Graphics</a>
+            <a href="experiences.html">Experiences</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+          <div class="social-icons">
+            <a href="https://www.instagram.com/maniacplanet/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/maniacplanet" target="_blank"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </header>
+
+      <nav class="offcanvas-menu" aria-label="Menú móvil">
+        <a href="motiongraphics.html">Motion Graphics</a>
+        <a href="experiences.html">Experiences</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <div class="offcanvas-social-icons">
+          <a href="https://www.instagram.com/maniacplanet/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.youtube.com/maniacplanet" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+      </nav>
+    `;
+
+    const footerHTML = `
+      <footer class="site-footer">
+        <div class="footer-content">
+          <p>&copy; 2025 Eloquent Mograph Studio. All rights reserved.</p>
+          <div class="footer-links">
+            <a href="mailto:marielakfz@gmail.com">Contact</a>
+            <a href="https://www.instagram.com/maniacplanet/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/maniacplanet" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="privacidad.html">Privacidad</a>
+          </div>
+        </div>
+      </footer>
+    `;
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('header-container').innerHTML = headerHTML;
+      document.body.insertAdjacentHTML('beforeend', footerHTML);
+
+      const menuToggle = document.getElementById('menuToggle');
+      const offcanvasMenu = document.querySelector('.offcanvas-menu');
+
+      menuToggle?.addEventListener('click', () => {
+        offcanvasMenu.classList.toggle('active');
+      });
+
+      const offcanvasLinks = document.querySelectorAll('.offcanvas-menu a');
+      offcanvasLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          offcanvasMenu.classList.remove('active');
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        const clickInside = offcanvasMenu.contains(e.target);
+        const clickedToggle = menuToggle.contains(e.target);
+        if (!clickInside && !clickedToggle && offcanvasMenu.classList.contains('active')) {
+          offcanvasMenu.classList.remove('active');
+        }
+      });
+
+      function ajustarPaddingTop() {
+        const header = document.querySelector('header');
+        if (!header) return;
+        const altura = header.offsetHeight;
+        document.body.style.paddingTop = altura + 'px';
+      }
+
+      window.addEventListener('load', ajustarPaddingTop);
+      window.addEventListener('resize', ajustarPaddingTop);
+    });
+  </script>
+
+</body>
+</html>

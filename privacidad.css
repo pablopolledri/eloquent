@@ -1,0 +1,55 @@
+/* ===== PRIVACIDAD ===== */
+
+.privacidad {
+  max-width: 800px;               /* Ancho máximo para evitar que sea muy ancho */
+  margin: 2rem auto 4rem;         /* Espacio arriba y abajo, centrado horizontalmente */
+  padding: 0 0.5rem;              /* Espacio a los lados para dispositivos móviles */
+  background: white;              /* Fondo blanco para destacar el texto */
+  border-radius: 8px;             /* Bordes redondeados */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sombra suave */
+  color: #333;                   /* Color del texto */
+  font-weight: 400;              /* Peso normal */
+  line-height: 1.6;              /* Espaciado entre líneas para mejor lectura */
+  font-size: 1rem;               /* Tamaño de fuente base */
+  padding-bottom: 0.2rem;        /* Espacio inferior extra */
+}
+
+.privacidad h1 {
+  font-weight: 700;              /* Negrita */
+  font-size: 2rem;               /* Tamaño grande para título principal */
+  margin-bottom: 1.5rem;         /* Espacio debajo */
+  color: #222;                  /* Color texto más oscuro */
+}
+
+.privacidad h2 {
+  font-weight: 600;              /* Semi-negrita */
+  margin-top: 2rem;              /* Espacio arriba */
+  margin-bottom: 1rem;           /* Espacio abajo */
+  font-size: 1.25rem;            /* Tamaño algo más grande para subtítulos */
+  color: #444;                  /* Gris medio */
+}
+
+.privacidad p, .privacidad ul {
+  margin-bottom: 1rem;           /* Separación vertical entre párrafos y listas */
+}
+
+.privacidad ul {
+  padding-left: 1.25rem;         /* Sangría para listas */
+}
+
+.privacidad a {
+  color: #666;                   /* Color gris para enlaces */
+  text-decoration: underline;    /* Subrayado para distinguir enlaces */
+}
+
+.privacidad a:hover {
+  color: #000;                   /* Cambio a negro en hover para mejor contraste */
+}
+
+/* Responsive tweaks para pantallas pequeñas */
+@media (max-width: 480px) {
+  .privacidad {
+    padding: 0 1rem;             /* Más espacio lateral en móvil */
+    font-size: 0.95rem;          /* Fuente ligeramente más pequeña */
+  }
+}

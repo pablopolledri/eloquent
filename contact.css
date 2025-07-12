@@ -1,0 +1,117 @@
+/* BODY: quita margen y da espacio arriba para que no quede pegado al header */
+body {
+  margin: 0;
+  padding-top: 60px;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.contact-container {
+  max-width: 1200px;
+  margin: 40px auto 60px;
+  padding: 20px 40px;
+  text-align: center;
+  color: #555;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* WRAPPER FLEX */
+.contact-wrapper {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+/* TEXTO DE CONTACTO */
+.contact-text {
+  flex: 1 1 400px;
+  max-width: 500px;
+  text-align: left;
+  color: #555;
+  font-size: 1.1em;
+  line-height: 1.5;
+}
+
+/* FORMULARIO */
+.contact-form {
+  flex: 1 1 300px;
+  max-width: 700px;
+}
+
+/* IFRAME */
+.contact-form iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 4px;
+}
+
+/* EMAIL */
+.contact-email {
+  margin-top: 10px;
+  margin-bottom: 40px;
+  font-size: 1em;
+  color: #272727;
+  text-align: center;
+}
+
+.contact-email a {
+  font-weight: bold;
+  color: #19429b;
+  text-decoration: none;
+}
+
+.contact-email a:hover {
+  text-decoration: underline;
+}
+
+/* RESPONSIVE hasta 850px */
+@media (max-width: 850px) {
+  .contact-container {
+    padding: 20px;
+  }
+
+  .contact-wrapper {
+    flex-direction: column;
+    gap: 30px;
+    align-items: stretch;
+  }
+
+  .contact-text,
+  .contact-form {
+    flex: none;
+    width: 100%;
+    max-width: none;
+  }
+
+  .contact-form iframe {
+    width: 100%;
+    height: 600px;
+    display: block;
+  }
+}
+
+/* RESPONSIVE hasta 600px */
+@media (max-width: 600px) {
+  .contact-form iframe {
+    height: 500px;
+  }
+}
+
+.email {
+  font-weight: bold;
+  color: #414141;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.email:hover {
+  text-decoration: underline;
+  color: #ff0080;
+}

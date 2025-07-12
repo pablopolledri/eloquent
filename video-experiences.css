@@ -1,0 +1,285 @@
+
+/* Texto Chico */
+.caption-small {
+  font-size: 0.8em; /* o 12px, según lo que necesites */
+  opacity: 0.8; /* opcional, para que sea más sutil */
+}
+
+
+
+/* VIDEO IFRAME AND OVERLAY */
+#videoIframe {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 90vw;
+  max-width: 1100px;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  max-height: 80vh;
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 10px;
+  box-shadow: none;
+  z-index: 9998;
+  background: transparent; /* <-- aquí */
+  transition: width 0.3s ease, height 0.3s ease;
+  margin: 0; /* asegurar que no haya margenes */
+  padding: 0; /* asegurar que no haya padding */
+}
+
+/* animacion al aparecer */
+.work-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.work-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* animacion escalonada */
+.work-item.visible:nth-child(1)  { transition-delay: 0s; }
+.work-item.visible:nth-child(2)  { transition-delay: 0.1s; }
+.work-item.visible:nth-child(3)  { transition-delay: 0.2s; }
+.work-item.visible:nth-child(4)  { transition-delay: 0.3s; }
+.work-item.visible:nth-child(5)  { transition-delay: 0.4s; }
+.work-item.visible:nth-child(6)  { transition-delay: 0.5s; }
+/* A partir del 7, sin delay */
+.work-item.visible:nth-child(n+7) { transition-delay: 0s; }
+
+
+
+/* CAMBIO REALIZADO: video responsive con clamp para ancho y alto */
+#videoIframe.active {
+  display: block;
+  width: clamp(320px, 80vw, 90vw);
+  aspect-ratio: 16 / 9;
+  height: auto;
+  background: transparent; /* <-- también aquí */
+  margin: 0;
+  padding: 0;
+}
+
+/* OVERLAY */
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.95);
+  z-index: 1200;
+}
+
+#overlay.active {
+  display: block;
+}
+
+/* BOTÓN CERRAR */
+#closeBtn {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  line-height: 44px;
+  cursor: pointer;
+  z-index: 10000; /* sobre el overlay y el iframe */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#closeBtn.active {
+  display: block;
+  opacity: 1;
+}
+
+#closeBtn:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: black;
+}
+
+#closeBtn:focus {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+/* OFF-CANVAS MENU */
+.offcanvas-menu {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100vh;
+  background: white;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+  transition: right 0.3s ease;
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.offcanvas-menu.active {
+  right: 0;
+}
+
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+  .header-right {
+    display: none;
+  }
+
+  #menuToggle {
+    display: inline-block;
+  }
+
+  #videoIframe.active {
+    width: 100vh;           /* ancho real */
+    height: auto;           /* altura automática */
+    max-height: 90vw;       /* limite max de alto (visual ancho) */
+    aspect-ratio: 16 / 9;   /* mantener proporción */
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  /* Mover completamente la posición del botón cerrar en móvil */
+  #closeBtn {
+    top: auto;
+    bottom: 8px;
+    right: 8px;
+  }
+}
+
+/* WORK SECTION */
+.work-container {
+  padding-top: 0px; /* para desktop */
+  max-width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin: 0 auto;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.work-item {
+  position: relative; /* para controlar overflow y posicionar caption */
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.work-item img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: none;
+}
+
+.work-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7); /* negro oscuro semi-transparente */
+  padding: 0.5rem 1rem;
+  margin: 0;
+  font-size: 1rem;
+  color: #fff; /* texto blanco */
+  font-weight: bold; /* texto en negrita */
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
+  pointer-events: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.work-item:hover img,
+.work-item:focus-within img {
+  transform: scale(1.05);
+  filter: grayscale(100%);
+}
+
+.work-item:hover .work-caption,
+.work-item:focus-within .work-caption {
+  opacity: 1;
+  max-height: 100px;
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* Responsive para pantallas chicas */
+@media (max-width: 700px) {
+  .about-flex {
+    flex-direction: column;
+  }
+
+  .about-image,
+  .about-text {
+    width: 100%;
+  }
+
+  .about-image {
+    margin-bottom: 15px;
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  .privacidad {
+    padding: 0 1rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Para pantallas grandes: video a 90% ancho */
+@media (min-width: 1024px) {
+  #videoIframe.active {
+    width: 90vw !important;
+    max-width: none !important;
+    max-height: 90vh !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+    transform: translate(-50%, -50%) !important;
+  }
+}
+
+/* Ajuste padding-top del contenedor work para evitar que el header lo tape en pantallas medianas */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .work-container {
+    padding-top: 10px; /* aumenta el padding-top según el alto real del header agrandado */
+  }
+}
