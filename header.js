@@ -20,10 +20,6 @@ const headerHTML = `
         <a href="services.html">Services</a>
         <a href="contact.html">Contact</a>
         </nav>
-      <div class="social-icons">
-        <a href="https://www.instagram.com/maniacplanet/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.youtube.com/maniacplanet" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
-      </div>
     </div>
   </header>
 
@@ -32,11 +28,7 @@ const headerHTML = `
     <a href="experiences.html">Experiences</a>
     <a href="services.html">Services</a>
     <a href="contact.html">Contact</a>
-    <div class="offcanvas-social-icons">
-      <a href="https://www.instagram.com/maniacplanet/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/maniacplanet" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
-    </div>
-  </nav>
+     </nav>
 `;
 
 const footerHTML = `
@@ -45,8 +37,6 @@ const footerHTML = `
       <p>&copy; 2025 Eloquent Mograph Studio. All rights reserved.</p>
       <div class="footer-links">
         <a href="mailto:marielakfz@gmail.com">Contact</a>
-        <a href="https://www.instagram.com/maniacplanet/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.youtube.com/maniacplanet" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         <a href="privacidad.html">Privacidad</a>
       </div>
     </div>
