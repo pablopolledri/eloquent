@@ -1,84 +1,197 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Eloquent Mograph Studio</title>
-  <link rel="icon" href="https://res.cloudinary.com/ddffqj0du/image/upload/v1752337453/favicon_ykaxnv.png" type="image/png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+/* Reset y globales */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: #fff;
+  color: #333;
+}
 
-  <link rel="stylesheet" href="global.css" />
-  <link rel="stylesheet" href="index.css" />
-  <script src="header.js" defer></script>
-</head>
-<body>
 
-  <!-- Header container -->
-  <div id="header-container"></div>
+/* ======================= */
+/* ======= HERO VIDEO ==== */
+/* ======================= */
+#hero-video {
+  margin-top: 80px;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+}
+#hero-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-  <!-- Hero Video -->
-  <section id="hero-video">
-    <video autoplay muted loop playsinline>
-      <source src="img/reel.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </section>
+/* ======================= */
+/* ==== TEXTO PRINCIPAL == */
+/* ======================= */
+#texto-principal {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+#texto-principal h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #111;
+}
+#texto-principal h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 20px;
+  color: #555;
+}
+#texto-principal p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #444;
+}
+#texto-principal ul {
+  list-style: none;
+  padding-left: 0;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
+  color: #333;
+}
+#texto-principal ul li {
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+#texto-principal ul li::before {
+  content: "✔️";
+  margin-right: 8px;
+  color: #28a745;
+}
 
-  <!-- Texto principal -->
-  <section id="texto-principal">
-    <h1>Elevate Your Brand with Motion Graphics</h1>
-    <h2>Capture attention with stunning visuals</h2>
-    <p>
-      In today's fast-paced digital landscape, static visuals just aren't enough. That's why we offer bespoke motion graphics services to help companies like yours stand out from the crowd.
-    </p>
-    <ul>
-      <li>Enhance your brand identity</li>
-      <li>Explain complex information in an engaging way</li>
-      <li>Boost your marketing efforts</li>
-      <li>Drive traffic and social media engagement</li>
-    </ul>
-  </section>
+/* ======================= */
+/* ====== SECCIONES ====== */
+/* ======================= */
+.sections-container {
+  display: flex;
+  max-width: 1000px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.section-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  text-decoration: none;
+  color: #333;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  transition: box-shadow 0.3s ease;
+}
+.section-card:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+.section-card img {
+  width: 100%;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+.section-card h3 {
+  margin: 15px 0 10px;
+  font-size: 1.4rem;
+}
+.section-card p {
+  padding: 0 15px;
+  font-size: 1rem;
+  line-height: 1.4;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #555;
+}
+.see-more {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #007bff;
+  text-decoration: underline;
+}
 
-  <!-- Secciones -->
-  <section class="sections-container">
-    <a href="motiongraphics.html" class="section-card">
-      <img src="img/work/work-01.jpg" alt="Motion Graphics" />
-      <h3>Motion Graphics</h3>
-      <p>Creative animations that bring your brand to life and communicate your message clearly.</p>
-      <span class="see-more">See more →</span>
-    </a>
-    <a href="experiences.html" class="section-card">
-      <img src="img/work/work-02.jpg" alt="Experiences" />
-      <h3>Experiences</h3>
-      <p>Immersive and interactive digital experiences designed to engage your audience deeply.</p>
-      <span class="see-more">See more →</span>
-    </a>
-    <a href="services.html" class="section-card">
-      <img src="img/work/work-03.jpg" alt="Services" />
-      <h3>Services</h3>
-      <p>Comprehensive solutions tailored to your needs, from concept to delivery.</p>
-      <span class="see-more">See more →</span>
-    </a>
-  </section>
+/* Responsive sections */
+@media (max-width: 900px) {
+  .section-card {
+    width: 45%;
+  }
+}
+@media (max-width: 600px) {
+  .section-card {
+    width: 90%;
+  }
+}
 
-  <!-- Contacto -->
-  <section id="contact-info">
-    <h4>Contact us</h4>
-    <div class="contact-columns">
-      <div class="contact-column">
-         <!-- Contacto 
-        <p>Argentina</p>
-        <a href="mailto:polledri@gmail.com">polledri@gmail.com</a>
-      </div>
-      -->
-      <div class="contact-column">
-        <p>Mariela</p>
-        <a href="mailto:marielakfz@gmail.com">marielakfz@gmail.com</a>
-      </div>
-    </div>
-  </section>
+/* ======================= */
+/* ===== CONTACT INFO ==== */
+/* ======================= */
+#contact-info {
+  max-width: 900px;
+  margin: 60px auto 80px;
+  padding: 0 20px;
+  text-align: center;
+  font-size: 1rem;
+  color: #444;
+}
+#contact-info h4 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+#contact-info .contact-columns {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.contact-column {
+  min-width: 200px;
+}
+.contact-column p {
+  margin: 8px 0;
+}
+.contact-column a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+}
 
-  <!-- Scripts -->
-  
-</body>
-</html>
+/* ======================= */
+/* ======== FOOTER ======= */
+/* ======================= */
+.site-footer {
+  background: #f8f8f8;
+  padding: 30px;
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  border-top: 1px solid #ddd;
+}
+.footer-links {
+  margin-top: 10px;
+}
+.footer-links a {
+  margin: 0 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* Ajustes adicionales */
+@media (min-width: 769px) {
+  #texto-principal {
+    padding-top: 80px;
+  }
+}

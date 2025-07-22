@@ -3,7 +3,7 @@ const headerHTML = `
     <div class="header-content">
       <div class="logo-text-group">
         <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
-          <img src="img/logo.png" alt="Logo" class="logo" />
+          <img src="https://res.cloudinary.com/ddffqj0du/image/upload/v1752337454/logo_w2kgxk.png" alt="Logo" class="logo" />
           <div class="header-text">
             <h1>ELOQUENT</h1>
             <p class="subtitulo">Mograph Studio</p>
