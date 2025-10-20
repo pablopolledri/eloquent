@@ -15,8 +15,9 @@ const headerHTML = `
 
     <div class="header-right">
       <nav class="header-nav">
-        <a href="motiongraphics.html">Motion Graphics</a>
-        <a href="experiences.html">Experiences</a>
+        <a href="ExplainerVideos.html">Explainer Videos</a>
+        <a href="BrandStorytelling.html">Brand Storytelling</a>
+        <a href="CorporateEvents.html">Corporate Events</a>
         <a href="services.html">Services</a>
         <a href="contact.html">Contact</a>
         </nav>
@@ -24,8 +25,9 @@ const headerHTML = `
   </header>
 
   <nav class="offcanvas-menu" aria-label="Menú móvil">
-    <a href="motiongraphics.html">Motion Graphics</a>
-    <a href="experiences.html">Experiences</a>
+    <a href="ExplainerVideos.html">Explainer Videos</a>
+    <a href="BrandStorytelling.html">Brand Storytelling</a>
+    <a href="CorporateEvents.html">Corporate Events</a>
     <a href="services.html">Services</a>
     <a href="contact.html">Contact</a>
      </nav>
@@ -34,14 +36,18 @@ const headerHTML = `
 const footerHTML = `
   <footer class="site-footer">
     <div class="footer-content">
-      <p>&copy; 2025 Eloquent Mograph Studio. All rights reserved.</p>
+      <p>
+        &copy; 2025 Eloquent Mograph Studio. All rights reserved.<br>
+        PO Box 2092 - Rockville - MD 20847
+      </p>
       <div class="footer-links">
-        <a href="mailto:marielakfz@gmail.com">Contact</a>
+        <a href="mailto:eloquentstudio.us@gmail.com">Contact</a>
         <a href="privacidad.html">Privacidad</a>
       </div>
     </div>
   </footer>
 `;
+
 
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('header-container').innerHTML = headerHTML;

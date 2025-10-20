@@ -1,21 +1,9 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #f9f9f9;
-  color: #222;
-  text-align: center;
-}
-
-h1, h2, h3 {
-  margin: 0.5em 0;
-}
-
+/* --------------------- Hero --------------------- */
 .hero {
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   color: white;
   padding: 80px 20px;
-  text-align: center; /* para centrar el texto */
+  text-align: center;
 }
 
 .hero h1 {
@@ -24,8 +12,6 @@ h1, h2, h3 {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeUp 0.8s forwards 0.2s, glowPulse 2.5s ease-in-out infinite alternate;
-
-  /* efecto glow */
   text-shadow:
     0 0 5px #00c6ff,
     0 0 10px #00c6ff,
@@ -49,7 +35,7 @@ h1, h2, h3 {
   line-height: 1.6;
 }
 
-/* Animaciones */
+/* --------------------- Animations --------------------- */
 @keyframes fadeUp {
   to {
     opacity: 1;
@@ -78,16 +64,18 @@ h1, h2, h3 {
   }
 }
 
-
-.services, .benefits, .cta {
+/* --------------------- Services Section (Aislada) --------------------- */
+.services-section.header-isolated-off {
   padding: 60px 20px;
   background: white;
+  text-align: center; /* ahora todo centrado */
 }
 
-.services h2, .benefits h2 {
+.services-section.header-isolated-off h2 {
   font-size: 2.4rem;
   margin-bottom: 40px;
   color: #2c5364;
+  text-align: center;
 }
 
 .cards {
@@ -119,35 +107,48 @@ h1, h2, h3 {
   transform: translateY(-10px);
 }
 
-.benefits ul {
+/* --------------------- Benefits Section (Aislada) --------------------- */
+.benefits-section.header-isolated-off {
+  background: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.benefits-section.header-isolated-off h2 {
+  font-size: 2.4rem;
+  margin-bottom: 40px;
+  color: #2c5364;
+}
+
+.benefits-section.header-isolated-off ul {
   list-style: none;
   padding: 0;
   max-width: 700px;
   margin: auto;
 }
 
-.benefits li {
+.benefits-section.header-isolated-off li {
   font-size: 1.2rem;
   margin: 15px 0;
+  text-align: center;
 }
 
-.benefits i {
-  color: #e8459f;
-  margin-right: 8px;
-}
-
-.cta {
+/* --------------------- CTA Section (Aislada) --------------------- */
+.cta.header-isolated-off {
   background: #e8459f;
   color: white;
   padding: 60px 20px;
+  text-align: center;
 }
 
-.cta h2 {
+.cta.header-isolated-off h2 {
   font-size: 2rem;
   margin-bottom: 20px;
+  text-align: center;
 }
 
-.btn {
+.cta.header-isolated-off .btn {
+  display: inline-block;
   padding: 12px 30px;
   background: white;
   color: #e8459f;
@@ -157,11 +158,11 @@ h1, h2, h3 {
   transition: 0.3s;
 }
 
-.btn:hover {
+.cta.header-isolated-off .btn:hover {
   background: #ffe6e6;
 }
 
-/* Fade-in animation */
+/* --------------------- Animaciones --------------------- */
 @keyframes fadeInUp {
   from {
     opacity: 0;
