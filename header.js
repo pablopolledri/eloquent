@@ -48,7 +48,6 @@ const footerHTML = `
   </footer>
 `;
 
-
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('header-container').innerHTML = headerHTML;
   document.body.insertAdjacentHTML('beforeend', footerHTML);
