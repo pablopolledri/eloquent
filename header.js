@@ -15,9 +15,9 @@ const headerHTML = `
 
     <div class="header-right">
       <nav class="header-nav">
-        <a href="ExplainerVideos.html">Explainer Videos</a>
-        <a href="BrandStorytelling.html">Brand Storytelling</a>
-        <a href="CorporateEvents.html">Corporate Events</a>
+        <a href="explainerVideos.html">Explainer Videos</a>
+        <a href="brandStorytelling.html">Brand Storytelling</a>
+        <a href="corporateEvents.html">Corporate Events</a>
         <a href="services.html">Services</a>
         <a href="contact.html">Contact</a>
         </nav>
@@ -25,9 +25,9 @@ const headerHTML = `
   </header>
 
   <nav class="offcanvas-menu" aria-label="Menú móvil">
-    <a href="ExplainerVideos.html">Explainer Videos</a>
-    <a href="BrandStorytelling.html">Brand Storytelling</a>
-    <a href="CorporateEvents.html">Corporate Events</a>
+    <a href="explainerVideos.html">Explainer Videos</a>
+    <a href="brandStorytelling.html">Brand Storytelling</a>
+    <a href="corporateEvents.html">Corporate Events</a>
     <a href="services.html">Services</a>
     <a href="contact.html">Contact</a>
      </nav>
